@@ -4,8 +4,18 @@ name: 运行 plugin_repackaging.sh 脚本
 on:
   workflow_dispatch:
     inputs:
-      script_param:
-        description: '传给 a.sh 的输入参数'
+      author:
+        description: 'plugin author'
+        required: true
+        default: ''
+        type: string
+      name:
+        description: 'plugin name'
+        required: true
+        default: ''
+        type: string
+      version:
+        description: 'plugin version'
         required: true
         default: ''
         type: string
@@ -18,8 +28,8 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: 给 a.sh 加执行权限
+      - name: 给脚本加执行权限
         run: chmod +x ./plugin_repackaging.sh
 
-      - name: 运行 a.sh 并传入参数
-        run: ./plugin_repackaging.sh market "${{ inputs.script_param }}"
+      - name: 运行脚本并传入参数 [plugin author] [plugin name] [plugin version]
+        run: ./plugin_repackaging.sh market "${{ inputs.author }}" "${{ inputs.name }}" "${{ inputs.version }}"
