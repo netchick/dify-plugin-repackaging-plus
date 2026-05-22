@@ -2,7 +2,7 @@
 # author: Junjie.M
 
 GITHUB_API_URL=https://github.com
-ARKETPLACE_API_URL=https://marketplace.dify.ai
+MARKETPLACE_API_URL=https://marketplace.dify.ai
 PIP_MIRROR_URL=https://mirrors.aliyun.com/pypi/simple
 
 ARCH=`if [ "$(uname -m)" = "x86_64" ]; then echo "dify-plugin-linux-amd64-5g"; else echo "dify-plugin-linux-arm64-5g"; fi`
