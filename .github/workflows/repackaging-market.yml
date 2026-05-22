@@ -1,0 +1,25 @@
+name: 运行 plugin_repackaging.sh 脚本
+
+# 触发方式：支持手动触发（可输入参数）
+on:
+  workflow_dispatch:
+    inputs:
+      script_param:
+        description: '传给 a.sh 的输入参数'
+        required: true
+        default: ''
+        type: string
+
+# 任务：拉代码 → 执行脚本
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 给 a.sh 加执行权限
+        run: chmod +x ./plugin_repackaging.sh
+
+      - name: 运行 a.sh 并传入参数
+        run: ./plugin_repackaging.sh market "${{ inputs.script_param }}"
