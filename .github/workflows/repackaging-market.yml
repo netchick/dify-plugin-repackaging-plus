@@ -33,3 +33,10 @@ jobs:
 
       - name: 运行脚本并传入参数 [plugin author] [plugin name] [plugin version]
         run: ./plugin_repackaging.sh market "${{ inputs.author }}" "${{ inputs.name }}" "${{ inputs.version }}"
+
+      # 上传并允许直接下载原文件
+      - name: 上传生成的offline.difypkg离线插件包
+        uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: ./*-offline.difypkg
