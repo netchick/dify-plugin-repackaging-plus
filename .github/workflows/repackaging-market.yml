@@ -1,4 +1,4 @@
-name: 运行 plugin_repackaging.sh 脚本
+name: Dify插件重打包脚本
 
 # 触发方式：支持手动触发（可输入参数）
 on:
